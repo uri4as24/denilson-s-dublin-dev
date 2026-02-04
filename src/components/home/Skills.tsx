@@ -1,40 +1,42 @@
 import { skills } from "@/data/portfolio";
+import { Badge } from "@/components/ui/badge";
 
 const skillCategories = [
-  { key: "web" as const, label: "Web" },
-  { key: "cms" as const, label: "CMS" },
-  { key: "dev" as const, label: "Dev Tools" },
-  { key: "it" as const, label: "IT" },
-  { key: "databases" as const, label: "Data" },
+  { key: "web" as const, label: "Web Technologies" },
+  { key: "cms" as const, label: "CMS & E-commerce" },
+  { key: "dev" as const, label: "Development Tools" },
+  { key: "it" as const, label: "IT & Infrastructure" },
+  { key: "databases" as const, label: "Databases" },
   { key: "tools" as const, label: "Tools" },
 ];
 
 export function Skills() {
   return (
-    <section className="section-padding bg-muted/20">
+    <section className="section-padding">
       <div className="section-container">
-        <div className="text-center mb-16">
-          <p className="text-primary text-sm font-medium tracking-widest uppercase mb-3">Tech Stack</p>
-          <h2 className="heading-lg">Skills & Technologies</h2>
-        </div>
+        <h2 className="heading-lg mb-4">Skills & Technologies</h2>
+        <p className="text-muted-foreground mb-10 max-w-2xl">
+          A comprehensive toolkit for building modern web experiences and managing IT infrastructure.
+        </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skillCategories.map((category) => (
             <div
               key={category.key}
-              className="p-5 sm:p-6 rounded-2xl subtle-border bg-card/30"
+              className="glass-panel-solid rounded-xl p-6"
             >
-              <h3 className="text-xs font-semibold text-primary mb-4 uppercase tracking-widest">
+              <h3 className="text-sm font-semibold text-primary mb-4 uppercase tracking-wider">
                 {category.label}
               </h3>
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-2">
                 {skills[category.key].map((skill) => (
-                  <span
+                  <Badge
                     key={skill}
-                    className="px-2.5 py-1 text-xs rounded-full bg-muted/50 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                    variant="secondary"
+                    className="px-3 py-1.5 text-sm"
                   >
                     {skill}
-                  </span>
+                  </Badge>
                 ))}
               </div>
             </div>
