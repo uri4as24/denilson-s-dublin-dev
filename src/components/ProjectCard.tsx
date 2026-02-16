@@ -16,7 +16,7 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <article className="glass-panel-solid rounded-xl p-6 card-hover group h-full flex flex-col">
+    <article className="glass-panel-solid rounded-2xl p-6 card-hover group h-full flex flex-col">
       <div className="flex items-start justify-between mb-4">
         <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">
           {project.name}
@@ -36,7 +36,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </p>
       <div className="flex flex-wrap gap-2">
         {project.tech.map((tech) => (
-          <Badge key={tech} variant="outline" className="text-xs">
+          <Badge key={tech} variant="outline" className="text-xs glass-pill">
             {tech}
           </Badge>
         ))}

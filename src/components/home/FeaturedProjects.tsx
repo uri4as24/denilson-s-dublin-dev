@@ -8,7 +8,7 @@ export function FeaturedProjects() {
   const featuredProjects = projects.filter((p) => p.featured).slice(0, 4);
 
   return (
-    <section className="section-padding bg-muted/30">
+    <section className="section-padding">
       <div className="section-container">
         <div className="flex items-end justify-between mb-10">
           <div>
@@ -29,7 +29,7 @@ export function FeaturedProjects() {
           {featuredProjects.map((project) => (
             <article
               key={project.id}
-              className="glass-panel-solid rounded-xl p-6 card-hover group"
+              className="glass-panel-solid rounded-2xl p-6 card-hover group"
             >
               <div className="flex items-start justify-between mb-4">
                 <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">
@@ -50,7 +50,7 @@ export function FeaturedProjects() {
               </p>
               <div className="flex flex-wrap gap-2">
                 {project.tech.slice(0, 4).map((tech) => (
-                  <Badge key={tech} variant="outline" className="text-xs">
+                  <Badge key={tech} variant="outline" className="text-xs glass-pill">
                     {tech}
                   </Badge>
                 ))}
@@ -60,7 +60,7 @@ export function FeaturedProjects() {
         </div>
 
         <div className="mt-8 text-center sm:hidden">
-          <Button asChild variant="outline" className="gap-2">
+          <Button asChild variant="outline" className="gap-2 rounded-full">
             <Link to="/projects">
               View All Projects
               <ArrowRight className="h-4 w-4" />

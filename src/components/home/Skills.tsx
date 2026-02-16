@@ -1,13 +1,14 @@
 import { skills } from "@/data/portfolio";
 import { Badge } from "@/components/ui/badge";
+import { Globe, ShoppingCart, GitBranch, Server, Database, Terminal } from "lucide-react";
 
 const skillCategories = [
-  { key: "web" as const, label: "Web Technologies" },
-  { key: "cms" as const, label: "CMS & E-commerce" },
-  { key: "dev" as const, label: "Development Tools" },
-  { key: "it" as const, label: "IT & Infrastructure" },
-  { key: "databases" as const, label: "Databases" },
-  { key: "tools" as const, label: "Tools" },
+  { key: "web" as const, label: "Web Technologies", icon: Globe, color: "text-primary", box: "icon-box-primary" },
+  { key: "cms" as const, label: "CMS & E-commerce", icon: ShoppingCart, color: "text-accent", box: "icon-box-accent" },
+  { key: "dev" as const, label: "Development Tools", icon: GitBranch, color: "text-tertiary", box: "icon-box-tertiary" },
+  { key: "it" as const, label: "IT & Infrastructure", icon: Server, color: "text-tertiary", box: "icon-box-tertiary" },
+  { key: "databases" as const, label: "Databases", icon: Database, color: "text-accent", box: "icon-box-accent" },
+  { key: "tools" as const, label: "Tools", icon: Terminal, color: "text-primary", box: "icon-box-primary" },
 ];
 
 export function Skills() {
@@ -20,27 +21,35 @@ export function Skills() {
         </p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skillCategories.map((category) => (
-            <div
-              key={category.key}
-              className="glass-panel-solid rounded-xl p-6"
-            >
-              <h3 className="text-sm font-semibold text-primary mb-4 uppercase tracking-wider">
-                {category.label}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {skills[category.key].map((skill) => (
-                  <Badge
-                    key={skill}
-                    variant="secondary"
-                    className="px-3 py-1.5 text-sm"
-                  >
-                    {skill}
-                  </Badge>
-                ))}
+          {skillCategories.map((category) => {
+            const Icon = category.icon;
+            return (
+              <div
+                key={category.key}
+                className="glass-panel-solid rounded-2xl p-6 card-hover"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className={`w-9 h-9 ${category.box}`}>
+                    <Icon className={`h-4.5 w-4.5 ${category.color}`} />
+                  </div>
+                  <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground/80">
+                    {category.label}
+                  </h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {skills[category.key].map((skill) => (
+                    <Badge
+                      key={skill}
+                      variant="secondary"
+                      className="px-3 py-1.5 text-sm glass-pill"
+                    >
+                      {skill}
+                    </Badge>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
