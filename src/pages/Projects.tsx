@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { ProjectCard } from "@/components/ProjectCard";
 import { projects } from "@/data/portfolio";
-import { Badge } from "@/components/ui/badge";
 
 const categories = ["All", "WordPress", "Frontend", "SEO", "IT"];
 
@@ -25,16 +24,16 @@ const Projects = () => {
             </p>
           </div>
 
-          {/* Filters */}
+          {/* Glass pill filters */}
           <div className="flex flex-wrap gap-2 mb-10">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setActiveFilter(category)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
                   activeFilter === category
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted text-muted-foreground hover:text-foreground hover:bg-muted/80"
+                    ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25"
+                    : "glass-pill text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {category}
@@ -51,9 +50,7 @@ const Projects = () => {
 
           {filteredProjects.length === 0 && (
             <div className="text-center py-16">
-              <p className="text-muted-foreground">
-                No projects found for this category.
-              </p>
+              <p className="text-muted-foreground">No projects found for this category.</p>
             </div>
           )}
         </div>
